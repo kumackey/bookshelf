@@ -15,7 +15,9 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      <SearchBooksForm />
+      <div className="container">
+        <SearchBooksForm />
+      </div>
     </AppContext.Provider>
   );
 };
