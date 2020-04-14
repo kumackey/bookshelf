@@ -5,7 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./front:/front
+      - .:/front
     working_dir: /front
-    command: node
+    command: yarn start
     tty: true
+    ports:
+      - 3000:3000
