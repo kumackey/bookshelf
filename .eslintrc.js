@@ -23,5 +23,9 @@ module.exports = {
   ],
   "rules": {
     "prettier/prettier": "error"
-  }
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  },
 }
