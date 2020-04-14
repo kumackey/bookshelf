@@ -1,3 +1,5 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import keyword from "./keyword";
+
+export default combineReducers({ keyword });
