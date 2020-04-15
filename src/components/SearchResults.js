@@ -9,7 +9,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <h4>検索結果</h4>
+      <h4 className="mt-3">検索結果</h4>
       {state.searchResults.map((searchResult, index) => {
         return <SearchResult key={index} searchResult={searchResult} />;
       })}
