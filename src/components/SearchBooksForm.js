@@ -4,7 +4,7 @@ import { UPDATE_KEYWORD, UPDATE_SEARCH_RESULTS } from "../actions";
 
 import AppContext from "../contexts/AppContext";
 
-import { getJSONFromKeyword } from "../googleBooksAPI";
+import { getResponseFromKeyword } from "../googleBooksAPI";
 
 const SerchBooksForm = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -16,7 +16,7 @@ const SerchBooksForm = () => {
       type: UPDATE_KEYWORD,
       keyword: keyword,
     });
-    const response = await getJSONFromKeyword(keyword);
+    const response = await getResponseFromKeyword(keyword);
     dispatch({
       type: UPDATE_SEARCH_RESULTS,
       response: response,
