@@ -6,7 +6,7 @@ import AppContext from "../contexts/AppContext";
 
 import { getResponseFromKeyword } from "../googleBooksAPI";
 
-const SerchBooksForm = () => {
+const SearchBooksForm = () => {
   const { state, dispatch } = useContext(AppContext);
   const [keyword, setKeyword] = useState("");
 
@@ -38,4 +38,4 @@ const SerchBooksForm = () => {
   );
 };
 
-export default SerchBooksForm;
+export default SearchBooksForm;
