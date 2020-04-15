@@ -10,6 +10,7 @@ import SearchBooksForm from "./SearchBooksForm";
 const App = () => {
   const initialState = {
     keyword: "",
+    searchResults: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 

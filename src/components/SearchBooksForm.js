@@ -1,18 +1,25 @@
 import React, { useState, useContext } from "react";
 
+import { UPDATE_KEYWORD, UPDATE_SEARCH_RESULTS } from "../actions";
+
 import AppContext from "../contexts/AppContext";
 
-import { UPDATE_KEYWORD } from "../actions";
+import { getJSONFromKeyword } from "../googleBooksAPI";
 
 const SerchBooksForm = () => {
   const { state, dispatch } = useContext(AppContext);
   const [keyword, setKeyword] = useState("");
 
-  const searchBooksWithKeyword = (e) => {
+  const searchBooksWithKeyword = async (e) => {
     e.preventDefault();
     dispatch({
       type: UPDATE_KEYWORD,
       keyword: keyword,
+    });
+    const response = await getJSONFromKeyword(keyword);
+    dispatch({
+      type: UPDATE_SEARCH_RESULTS,
+      response: response,
     });
   };
 
@@ -23,7 +30,7 @@ const SerchBooksForm = () => {
         <label htmlFor="formKeyword">キーワード</label>
         <input className="form-control" id="formKeyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
       </div>
-      <button className="btn btn-primary" onClick={searchBooksWithKeyword} disabled={false}>
+      <button className="btn btn-primary" onClick={searchBooksWithKeyword} disabled={!keyword}>
         検索する
       </button>
       <div>検索ワード: {state.keyword}</div>
