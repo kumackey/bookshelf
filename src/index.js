@@ -1,5 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import App from "./components/App";
+import BooksShow from "./components/BooksShow";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/books/:id" component={BooksShow} />
+      <Route path="/" component={App} />
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
