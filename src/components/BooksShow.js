@@ -10,24 +10,28 @@ const BooksShow = (props) => {
   const [imageLink, setImageLink] = useState("");
   const id = props.match.params.id;
 
-  const getItemFromId = async (id) => {
+  const getItemFromId = async () => {
     const response = await getResponseFromId(id);
     setItem(response.data);
   };
 
-  useEffect(() => {
-    getItemFromId(id);
+  const setItemInformation = () => {
     if (item.volumeInfo) {
       setTitle(item.volumeInfo.title);
       setImageLink(item.volumeInfo.imageLinks.thumbnail);
     }
+  };
+
+  useEffect(() => {
+    getItemFromId();
+    setItemInformation();
   }, [item.id]);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <img src={imageLink} />
+          <img src={imageLink} alt="本のサムネイル" />
         </div>
         <div className="col-8">
           <h4>title: {title}</h4>
